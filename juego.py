@@ -28,6 +28,6 @@ class Jugador :
              enemigo.recibir_golpe(poder)
              if not  enemigo.vivo:
                  self.puntuacion += 10
-                 print(f"{self.nombre} derrota a {enemigo.nombre} gana 10 puntos. puntacion totla:{self.puntuacion} ")
+                 print(f"{self.nombre} derrota a {enemigo.nombre} gana 10 puntos. puntacion total:{self.puntuacion} ")
 
 
