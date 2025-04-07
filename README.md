@@ -11,7 +11,7 @@ El proyecto consiste en crear un videojuego de plataformas inspirado en Super Ma
 
 
 
-# **Características principales**
+# **Características principales**:
 Movimientos básicos: El personaje podrá desplazarse hacia la izquierda, derecha, saltar y caer, controlado mediante teclas.  Sistema de recompensas: El jugador podrá recolectar monedas e ítems que aumenten su puntuación y le otorguen mejoras como armas o habilidades temporales. Sistema de combate:
 
 *El jugador podrá atacar a los enemigos con armas de corto alcance (espadas, puños) o de largo alcance (proyectiles, magia).
