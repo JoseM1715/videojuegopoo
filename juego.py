@@ -54,12 +54,22 @@ class Jugador(Personaje):
 class Arma:
     def __init__(self,nombre, tipo: str, dano: int):
         self.nombre = nombre
-        self.tipo = tipo
+        self.tipo = tipo # corto o largo alcance
         self.dano = dano
 
     def mejorar(self):
         self.dano += 2
         print(f"¡Tu arma {self.nombre} ha sido mejorada! Daño: {self.dano}")
+
+class Enemigo(Personaje):
+    def __init__(self, nombre, vida, agresivo=False):
+        super().__init__(nombre, vida)
+        self.agresivo = agresivo
+
+    def atacar(self, jugador):
+        dano = 1 if not self.agresivo else 2
+        print(f"{self.nombre} ataca con fuerza {dano}!")
+        jugador.recibir_dano(dano)
 
 
 
