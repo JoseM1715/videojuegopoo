@@ -17,31 +17,38 @@ class Personaje:
                  print(f"{self.nombre} ha sido derrotado.")
 
 
-class Jugador:
+class Jugador(Personaje):
      def __init__(self, nombre):
-         self.nombre: str = nombre
-         self.vida: int = 100
-         self.vivo: bool = True
-         self.puntuacion: int = 0
-         self.arma = None
+         super.__init__(nombre, vida=100)
+         self.puntos = 0
+         self.arma = Arma("Espada", "Corto")
+         self.energia = 0
+
 
      def atacar(self, enemigo):
-         if self.arma and self.arma.esta_disponble():
-             poder = self.arma.usar()
-             print(f"{self.nombre} ata con {self.arma.nombre} y causa {poder} de daño.")
-             enemigo.recibir_golpe(poder)
-             if not  enemigo.vivo:
-                 self.puntuacion += 10
-                 print(f"{self.nombre} derrota a {enemigo.nombre} gana 10 puntos. puntuacion total:{self.puntuacion} ")
-         else:
-             print(f"{self.nombre} no tiene un arma disponible para atacar")
+         print(f"Atacas a { enemigo.nombre} con {self.arma.nombre}")
+         enemigo.recibir_golpe(self.arma.golpe)
+         self.energia += 1
+         if self.energia >5:
+             print("Habilidad especial disponible")
 
-     def usar_arma(self):
-         if self.arma and self.arma.esta_disponible():
-             dano = self.arma.usar()
-             print(f"usaste el arma tipo {self.arma.tipo} con daño de {self.arma.dano} y alcance {self.arma.alcance}")
-             return dano
-         return print(f"{self.nombre} no se puede usar el arma")
+     def habilidad_especial(self,enemigos):
+         if self.energia >= 5:
+             print("Usas tu HABILIDAD ESPECIAL: ando de choque")
+             for enemigo in enemigos:
+                 enemigo.recibir_golpe(3)
+                 self.energia = 0
+            else:
+                print("Aun no tienes suficiente energia")
+
+     def recoger_recompensa(self, recompensa):
+         print(f"Has recogido: {recompensa}")
+         if recompensa == "gema":
+             self.arma.mejorar()
+         elif recompensa == "moneda":
+             self.puntos += 10
+             print(f"Puntos actuales: {self.puntos}")
+
 
 
 class Arma:
@@ -53,6 +60,9 @@ class Arma:
     def mejorar(self):
         self.dano += 2
         print(f"¡Tu arma {self.nombre} ha sido mejorada! Daño: {self.dano}")
+
+
+
 
 
 
