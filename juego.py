@@ -47,7 +47,7 @@ class Jugador:
 class Arma:
     def __init__(self,nombre, tipo: str, dano: int):
         self.nombre = nombre
-        self.tipo = tipo
+        self.tipo = tipo # corto o largo alcance
         self.dano = dano
 
     def mejorar(self):
