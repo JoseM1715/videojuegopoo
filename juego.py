@@ -9,7 +9,7 @@ class Personaje:
          self.vivo: bool = True
          self.velocidad: int = velocidad
 
-     def recibir_golpe(self, cantidad: int):
+     def recibir_dano(self, cantidad: int):
              self.vida -= cantidad
              print(f"{self.nombre} recibe {cantidad} de daño. vida restante: {self.vida}")
              if self.vida <= 0:
@@ -27,7 +27,7 @@ class Jugador(Personaje):
 
      def atacar(self, enemigo):
          print(f"Atacas a { enemigo.nombre} con {self.arma.nombre}")
-         enemigo.recibir_golpe(self.arma.golpe)
+         enemigo.recibir_dano(self.arma.dano)
          self.energia += 1
          if self.energia >5:
              print("Habilidad especial disponible")
@@ -36,7 +36,7 @@ class Jugador(Personaje):
          if self.energia >= 5:
              print("Usas tu HABILIDAD ESPECIAL: ando de choque")
              for enemigo in enemigos:
-                 enemigo.recibir_golpe(3)
+                 enemigo.recibir_dano(3)
                  self.energia = 0
             else:
                 print("Aun no tienes suficiente energia")
@@ -54,12 +54,22 @@ class Jugador(Personaje):
 class Arma:
     def __init__(self,nombre, tipo: str, dano: int):
         self.nombre = nombre
-        self.tipo = tipo
+        self.tipo = tipo # corto o largo alcance
         self.dano = dano
 
     def mejorar(self):
         self.dano += 2
         print(f"¡Tu arma {self.nombre} ha sido mejorada! Daño: {self.dano}")
+
+class Enemigo(Personaje):
+    def __init__(self, nombre, vida, agresivo=False):
+        super().__init__(nombre, vida)
+        self.agresivo = agresivo
+
+    def atacar(self, jugador):
+        dano = 1 if not self.agresivo else 2
+        print(f"{self.nombre} ataca con fuerza {dano}!")
+        jugador.recibir_dano(dano)
 
 
 
