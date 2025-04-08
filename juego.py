@@ -19,8 +19,9 @@ class Personaje:
 
 class Jugador:
      def __init__(self, nombre):
-         super().__init__(nombre, vida=100)
          self.nombre: str = nombre
+         self.vida: int = 100
+         self.vivo: bool = True
          self.puntuacion: int = 0
          self.arma = None
 
@@ -32,10 +33,15 @@ class Jugador:
              if not  enemigo.vivo:
                  self.puntuacion += 10
                  print(f"{self.nombre} derrota a {enemigo.nombre} gana 10 puntos. puntuacion total:{self.puntuacion} ")
+         else:
+             print(f"{self.nombre} no tiene un arma disponible para atacar")
 
      def usar_arma(self):
-         pass
-
+         if self.arma and self.arma.esta_disponible():
+             dano = self.arma.usar()
+             print(f"usaste el arma tipo {self.arma.tipo} con daño de {self.arma.dano} y alcance {self.arma.alcance}")
+             return dano
+         return print(f"{self.nombre} no se puede usar el arma")
 
 
 class Arma:
@@ -43,9 +49,16 @@ class Arma:
         self.tipo = tipo
         self.dano = dano
         self.alcance = alcance
+        self.cargada = True # disponibilidad
+
+    def esta_disponible(self):
+        return self.cargada
 
     def usar(self):
-        print(f"usaste el arma tipo {self.tipo} con daño de {self.dano} y alcance {self.alcance}")
+        if self.cargada:
+            self.cargada = False
+            return self.dano
 
-
+        print(f"El arma {self.tipo} no esta disponible")
+        return 0
 
