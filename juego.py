@@ -103,6 +103,19 @@ def juego():
         else:
             print("Acción no válida.")
 
+        if enemigo.esta_vivo():
+            enemigo.atacar(jugador)
+
+        nivel += 1
+        time.sleep(1)
+
+    if jugador.esta_vivo():
+        print("\nHas ganado. Puntuación: ", jugador.puntos)
+    else:
+        print("\nHas perdido. Fin del juego.")
+
+
+juego()
 
 
 
