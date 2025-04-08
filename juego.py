@@ -54,6 +54,12 @@ class Arma:
         self.dano += 2
         print(f"¡Tu arma {self.nombre} ha sido mejorada! Daño: {self.dano}")
 
+class Enemigo(Personaje):
+    def __init__(self, nombre, vida, agresivo=False):
+        super().__init__(nombre, vida)
+        self.agresivo = agresivo
+
+    
 
 
 
