@@ -19,7 +19,7 @@ class Jugador(Personaje):
      def __init__(self, nombre):
          super().__init__(nombre, vida=10)
          self.puntos = 0
-         self.arma = Arma("Espada", "Corto")
+         self.arma = Arma("Espada", "Corto", 2)
          self.energia = 0
 
 
@@ -32,7 +32,7 @@ class Jugador(Personaje):
 
      def habilidad_especial(self, enemigos):
          if self.energia >= 5:
-             print("Usas tu HABILIDAD ESPECIAL: ando de choque")
+             print("Usas tu HABILIDAD ESPECIAL: onda de choque")
              for enemigo in enemigos:
                  enemigo.recibir_dano(3)
                  self.energia = 0
