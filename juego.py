@@ -59,7 +59,10 @@ class Enemigo(Personaje):
         super().__init__(nombre, vida)
         self.agresivo = agresivo
 
-    
+    def atacar(self, jugador):
+        dano = 1 if not self.agresivo else 2
+        print(f"{self.nombre} ataca con fuerza {dano}!")
+        jugador.recibir_dano(dano)
 
 
 
