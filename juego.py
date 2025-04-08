@@ -1,25 +1,24 @@
-from abc import  ABC, abstractmethod
 import random
+import time
 
 
 class Personaje:
-     def __init__(self, nombre: str, vida: int, vivo: bool, velocidad: int):
+     def __init__(self, nombre: str, vida: int):
          self.nombre: str = nombre
          self.vida: int = vida
-         self.vivo: bool = True
-         self.velocidad: int = velocidad
 
      def recibir_dano(self, cantidad: int):
-             self.vida -= cantidad
-             print(f"{self.nombre} recibe {cantidad} de daño. vida restante: {self.vida}")
-             if self.vida <= 0:
-                 self.vivo = False
-                 print(f"{self.nombre} ha sido derrotado.")
+         self.vida -= cantidad
+         print(f"{self.nombre} recibe {cantidad} de daño. Vida restante: {self.vida}")
+
+
+     def esta_vivo(self):
+        return self.vida > 0
 
 
 class Jugador(Personaje):
      def __init__(self, nombre):
-         super().__init__(nombre, vida=100)
+         super().__init__(nombre, vida=10)
          self.puntos = 0
          self.arma = Arma("Espada", "Corto")
          self.energia = 0
@@ -29,16 +28,16 @@ class Jugador(Personaje):
          print(f"Atacas a { enemigo.nombre} con {self.arma.nombre}")
          enemigo.recibir_dano(self.arma.dano)
          self.energia += 1
-         if self.energia >5:
+         if self.energia >= 5:
              print("Habilidad especial disponible")
 
-     def habilidad_especial(self,enemigos):
+     def habilidad_especial(self, enemigos):
          if self.energia >= 5:
              print("Usas tu HABILIDAD ESPECIAL: ando de choque")
              for enemigo in enemigos:
                  enemigo.recibir_dano(3)
                  self.energia = 0
-            else:
+             else:
                 print("Aun no tienes suficiente energia")
 
      def recoger_recompensa(self, recompensa):
@@ -48,7 +47,6 @@ class Jugador(Personaje):
          elif recompensa == "moneda":
              self.puntos += 10
              print(f"Puntos actuales: {self.puntos}")
-
 
 
 class Arma:
@@ -72,10 +70,9 @@ class Enemigo(Personaje):
         jugador.recibir_dano(dano)
 
 
-
 def juego():
     jugador = Jugador("Heroe")
-    enemigos = [Enemigo("Gomba", 5), Enemigo("Koopa", 6, agresivo= True)]
+    enemigos = [Enemigo("Goomba", 5), Enemigo("Koopa", 6, agresivo= True)]
     recompensas = ["moneda", "gema"]
 
     nivel = 1
