@@ -19,7 +19,7 @@ class Personaje:
 
 class Jugador(Personaje):
      def __init__(self, nombre):
-         super.__init__(nombre, vida=100)
+         super().__init__(nombre, vida=100)
          self.puntos = 0
          self.arma = Arma("Espada", "Corto")
          self.energia = 0
@@ -73,8 +73,23 @@ class Enemigo(Personaje):
 
 
 
+def juego():
+    jugador = Jugador("Heroe")
+    enemigos = [Enemigo("Gomba", 5), Enemigo("Koopa", 6, agresivo= True)]
+    recompensas = ["moneda", "gema"]
 
+    nivel = 1
+    while jugador.esta_vivo() and enemigos:
+        print(f"\n--- Nivel {nivel} ---")
+        enemigo = enemigos[0]
+        accion = input("¿Qué quieres hacer (atacar / especial / recoger / salir): ").lower()
 
+        if accion == "atacar":
+            jugador.atacar(enemigo)
+
+            if not enemigo.esta_vivo():
+                print(f"{enemigo.nombre} ha sido derrotado.")
+                enemigos.pop(0)
 
 
 
