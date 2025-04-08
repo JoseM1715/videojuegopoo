@@ -1,6 +1,6 @@
 # Proyecto de Programación Orientada Objectos: Videojuego con sistema de combate.
 
-![img_3.png](img_3.png)
+![img_4.png](img_4.png)
 
 
 
@@ -24,18 +24,11 @@ Movimientos básicos: El personaje podrá desplazarse hacia la izquierda, derech
 # **Clases y estructura del juego:**
 Para mantener una arquitectura flexible y escalable, el diseño del juego se basa en programación orientada a objetos, con clases organizadas para facilitar la expansión del código:
 
--Personaje: Clase base que define atributos esenciales como posición, velocidad y vida, además de métodos para moverse y saltar.
+-Personaje: Clase base que define atributos esenciales como nombre y vida, además de métodos para recibir daño y estar vivo
 
--Jugador (hereda de Personaje): Contiene atributos como puntuación y métodos específicos para utilizar armas y habilidades.
+-Jugador (hereda de Personaje): Contiene atributos como puntos, arma, energía y métodos como atacar, recibir daño, habilidad especial y finalmente recoger recompensa.
 
--Enemigo (hereda de Personaje): Define los comportamientos de patrullaje, ataque y reacciones al daño.
+-Enemigo (hereda de Personaje): Define los comportamientos de atacar y recibir daño.
 
--Arma: Clase encargada de gestionar el tipo de arma, daño y restricciones de uso.
+-Arma: Clase encargada de gestionar el nombre del arma(flecha, puño), tipo(corta o larga) y daño
 
-ArmaCortoAlcance (ejemplo: espada, puño).
-
-ArmaLargoAlcance (ejemplo: flechas, bolas de fuego, magia).
-
-Recompensa: Clase para definir objetos que otorgan mejoras temporales (vida, velocidad) o nuevas armas.
-
-Nivel: Clase que gestiona el entorno, las colisiones y el progreso dentro del juego.
