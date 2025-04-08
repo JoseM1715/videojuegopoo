@@ -50,6 +50,10 @@ class Arma:
         self.tipo = tipo
         self.dano = dano
 
+    def mejorar(self):
+        self.dano += 2
+        print(f"¡Tu arma {self.nombre} ha sido mejorada! Daño: {self.dano}")
+
 
 
 
