@@ -90,6 +90,20 @@ def juego():
             if not enemigo.esta_vivo():
                 print(f"{enemigo.nombre} ha sido derrotado.")
                 enemigos.pop(0)
+        elif accion == "especial":
+            jugador.habilidad_especial(enemigos)
+        elif accion == "recoger":
+            if recompensas:
+                jugador.recoger_recompensa(recompensas.pop(0))
+            else:
+                print("No hay recompensas disponibles.")
+        elif accion == "salir":
+            print("Has salido del juego.")
+            break
+        else:
+            print("Acción no válida.")
+
+
 
 
 
