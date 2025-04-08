@@ -45,20 +45,12 @@ class Jugador:
 
 
 class Arma:
-    def __init__(self, tipo: str, dano: int, alcance: str):
+    def __init__(self,nombre, tipo: str, dano: int):
+        self.nombre = nombre
         self.tipo = tipo
         self.dano = dano
-        self.alcance = alcance
-        self.cargada = True # disponibilidad
 
-    def esta_disponible(self):
-        return self.cargada
 
-    def usar(self):
-        if self.cargada:
-            self.cargada = False
-            return self.dano
 
-        print(f"El arma {self.tipo} no esta disponible")
-        return 0
+
 
